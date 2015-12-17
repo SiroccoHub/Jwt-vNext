@@ -1,16 +1,21 @@
-﻿namespace JWT
+﻿using Newtonsoft.Json;
+
+namespace JwtDnx
 {
     /// <summary>
-    /// Provides JSON Serialize and Deserialize.  Allows custom serializers used.
+    /// JSON Serializer using JavaScriptSerializer
     /// </summary>
-    public interface IJsonSerializer
+    public class DefaultJsonSerializer : IJsonSerializer
     {
         /// <summary>
         /// Serialize an object to JSON string
         /// </summary>
         /// <param name="obj">object</param>
         /// <returns>JSON string</returns>
-        string Serialize(object obj);
+        public string Serialize(object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
+        }
 
         /// <summary>
         /// Deserialize a JSON string to typed object.
@@ -18,6 +23,9 @@
         /// <typeparam name="T">type of object</typeparam>
         /// <param name="json">JSON string</param>
         /// <returns>typed object</returns>
-        T Deserialize<T>(string json);
+        public T Deserialize<T>(string json)
+        {
+            return JsonConvert.DeserializeObject<T>(json);
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace JWT
+namespace JwtDnx
 {
     public enum JwtHashAlgorithm
     {
@@ -125,8 +125,11 @@ namespace JWT
             var payload = parts[1];
             var crypto = Base64UrlDecode(parts[2]);
 
-            var headerJson = Encoding.UTF8.GetString(Base64UrlDecode(header));
-            var payloadJson = Encoding.UTF8.GetString(Base64UrlDecode(payload));
+            var bytesHeader = Base64UrlDecode(header);
+            var bytesPayload = Base64UrlDecode(payload);
+
+            var headerJson = Encoding.UTF8.GetString(bytesHeader, 0, bytesHeader.Length);
+            var payloadJson = Encoding.UTF8.GetString(bytesPayload, 0, bytesPayload.Length);
 
             var headerData = JsonSerializer.Deserialize<Dictionary<string, object>>(headerJson);
 

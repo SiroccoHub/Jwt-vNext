@@ -1,23 +1,16 @@
-﻿using System.Web.Script.Serialization;
-
-namespace JWT
+﻿namespace JwtDnx
 {
     /// <summary>
-    /// JSON Serializer using JavaScriptSerializer
+    /// Provides JSON Serialize and Deserialize.  Allows custom serializers used.
     /// </summary>
-    public class DefaultJsonSerializer : IJsonSerializer
+    public interface IJsonSerializer
     {
-        private readonly JavaScriptSerializer serializer = new JavaScriptSerializer();
-
         /// <summary>
         /// Serialize an object to JSON string
         /// </summary>
         /// <param name="obj">object</param>
         /// <returns>JSON string</returns>
-        public string Serialize(object obj)
-        {
-            return serializer.Serialize(obj);
-        }
+        string Serialize(object obj);
 
         /// <summary>
         /// Deserialize a JSON string to typed object.
@@ -25,9 +18,6 @@ namespace JWT
         /// <typeparam name="T">type of object</typeparam>
         /// <param name="json">JSON string</param>
         /// <returns>typed object</returns>
-        public T Deserialize<T>(string json)
-        {
-            return serializer.Deserialize<T>(json);
-        }
+        T Deserialize<T>(string json);
     }
 }

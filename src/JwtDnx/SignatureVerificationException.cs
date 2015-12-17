@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JWT
+namespace JwtDnx
 {
 	public class SignatureVerificationException : Exception
 	{
