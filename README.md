@@ -16,7 +16,7 @@ var payload = new Dictionary<string, object>()
     { "claim2", "claim2-value" }
 };
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
-string token = JWT.JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256);
+string token = JwtDnx.JsonWebToken.Encode(payload, secretKey, JwtDnx.JwtHashAlgorithm.HS256);
 Console.WriteLine(token);
 ```
 
