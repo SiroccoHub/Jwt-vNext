@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0-*",
   "description": "JwtDnx Class Library",
-  "authors": [ "ax" ],
+  "authors": [ "@arichika(arichika.taniguchi)" ],
   "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "projectUrl": "https://github.com/SiroccoHub/JwtDnx",
+  "licenseUrl": "https://github.com/SiroccoHub/JwtDnx/blob/master/LICENSE.txt",
   "frameworks": {
     "net451": {
       "frameworkAssemblies": {
