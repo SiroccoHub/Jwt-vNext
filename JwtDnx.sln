@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9F2E439-993F-4A81-A409-F8916BE45016}"
+	ProjectSection(SolutionItems) = preProject
+		src\JwtDnx\global.json = src\JwtDnx\global.json
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "JwtDnx", "src\JwtDnx\JwtDnx.xproj", "{5DE0B1FE-44FE-4BCA-8484-0AF7F0710997}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{73203081-BDD0-4281-9D0C-0E9D9CB6B769}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CB253F9E-2F0A-470C-86DC-C2831087B2B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{D710E097-0D23-44FF-82EE-B3CDC8F5BA86}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "JwtDnx.SampleWeb", "sample\JwtDnx.SampleWeb\JwtDnx.SampleWeb.xproj", "{4AFD8096-A3E4-4F98-A847-6F74C9AF16E4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "JwtDnxTests", "test\JwtDnxTests\JwtDnxTests.xproj", "{04AAB0DC-E966-4B7E-B26A-F666EE6A1763}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DE0B1FE-44FE-4BCA-8484-0AF7F0710997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE0B1FE-44FE-4BCA-8484-0AF7F0710997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE0B1FE-44FE-4BCA-8484-0AF7F0710997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE0B1FE-44FE-4BCA-8484-0AF7F0710997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AFD8096-A3E4-4F98-A847-6F74C9AF16E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFD8096-A3E4-4F98-A847-6F74C9AF16E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFD8096-A3E4-4F98-A847-6F74C9AF16E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFD8096-A3E4-4F98-A847-6F74C9AF16E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AAB0DC-E966-4B7E-B26A-F666EE6A1763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AAB0DC-E966-4B7E-B26A-F666EE6A1763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AAB0DC-E966-4B7E-B26A-F666EE6A1763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AAB0DC-E966-4B7E-B26A-F666EE6A1763}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5DE0B1FE-44FE-4BCA-8484-0AF7F0710997} = {73203081-BDD0-4281-9D0C-0E9D9CB6B769}
+		{4AFD8096-A3E4-4F98-A847-6F74C9AF16E4} = {D710E097-0D23-44FF-82EE-B3CDC8F5BA86}
+		{04AAB0DC-E966-4B7E-B26A-F666EE6A1763} = {CB253F9E-2F0A-470C-86DC-C2831087B2B9}
+	EndGlobalSection
+EndGlobal
