@@ -1,9 +1,10 @@
-# JSON Web Token (JWT) Implementation for .NET
+# Json Web Token (JWT) / JWS Implementation for .NET DNX
 
-This library supports generating and decoding [JSON Web Tokens](http://tools.ietf.org/html/draft-jones-json-web-token-10).
+This library supports generating and decoding [JSON Web Tokens](http://tools.ietf.org/html/draft-jones-json-web-token-10). 
+forked from [jwt-dotnet/jwt](https://github.com/jwt-dotnet/jwt)
 
 ## Installation
-The easiest way to install is via NuGet.  See [here](https://nuget.org/packages/JWT).  Else, you can download and compile it yourself.
+Please  download and compile it yourself. NuGet? wait a second...
 
 ## Usage
 ### Creating Tokens
@@ -29,10 +30,10 @@ var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFpbTEiOjAsImNsYWltMiI6Im
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
 try
 {
-    string jsonPayload = JWT.JsonWebToken.Decode(token, secretKey);
+    string jsonPayload = JwtDnx.JsonWebToken.Decode(token, secretKey);
     Console.WriteLine(jsonPayload);
 }
-catch (JWT.SignatureVerificationException)
+catch (JwtDnx.SignatureVerificationException)
 {
     Console.WriteLine("Invalid token!");
 }
@@ -45,7 +46,7 @@ Output will be:
 You can also deserialize the JSON payload directly to a .Net object with DecodeToObject:
 
 ```csharp
-var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey) as IDictionary<string, object>;
+var payload = JwtDnx.JsonWebToken.DecodeToObject(token, secretKey) as IDictionary<string, object>;
 Console.WriteLine(payload["claim2"]);
 ```
 
@@ -65,14 +66,14 @@ var payload = new Dictionary<string, object>()
     { "exp", now }
 };
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
-string token = JWT.JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256);
+string token = JwtDnx.JsonWebToken.Encode(payload, secretKey, JwtDnx.JwtHashAlgorithm.HS256);
 
-string jsonPayload = JWT.JsonWebToken.Decode(token, secretKey); // JWT.SignatureVerificationException!
+string jsonPayload = JWT.JsonWebToken.Decode(token, secretKey); // JwtDnx.SignatureVerificationException!
 ```
 
 ### Configure JSON Serialization
 
-By default JSON Serialization is done by System.Web.Script.Serialization.JavaScriptSerializer.  To configure a different one first implement the IJsonSerializer interface.
+By default JSON Serialization is done by Newtonsoft.Json.  To configure a different one first implement the IJsonSerializer interface.
 
 ```csharp
 public class CustomJsonSerializer : IJsonSerializer
