@@ -4,7 +4,7 @@ This library supports generating and decoding [JSON Web Tokens](http://tools.iet
 forked from [jwt-dotnet/jwt](https://github.com/jwt-dotnet/jwt)
 
 ## Installation
-Please  download and compile it yourself. NuGet? wait a second...
+Please  download and compile it yourself. NuGet is [here](https://www.nuget.org/packages/JwtDnx/).
 
 ## Usage
 ### Creating Tokens
