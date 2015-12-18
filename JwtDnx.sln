@@ -5,7 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9F2E439-993F-4A81-A409-F8916BE45016}"
 	ProjectSection(SolutionItems) = preProject
-		src\JwtDnx\global.json = src\JwtDnx\global.json
 		global.json = global.json
 	EndProjectSection
 EndProject
