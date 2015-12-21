@@ -72,7 +72,7 @@ namespace JwtDnx
         /// <summary>
         /// Creates a JWT given a payload, the signing key, and the algorithm to use.
         /// </summary>
-        /// <param name="payload">An arbitrary payload (must be serializable to JSON via <see cref="System.Web.Script.Serialization.JavaScriptSerializer"/>).</param>
+        /// <param name="payload">An arbitrary payload.</param>
         /// <param name="key">The key used to sign the token.</param>
         /// <param name="algorithm">The hash algorithm to use.</param>
         /// <returns>The generated JWT.</returns>
@@ -85,7 +85,7 @@ namespace JwtDnx
         /// Creates a JWT given a set of arbitrary extra headers, a payload, the signing key, and the algorithm to use.
         /// </summary>
         /// <param name="extraHeaders">An arbitrary set of extra headers. Will be augmented with the standard "typ" and "alg" headers.</param>
-        /// <param name="payload">An arbitrary payload (must be serializable to JSON via <see cref="System.Web.Script.Serialization.JavaScriptSerializer"/>).</param>
+        /// <param name="payload">An arbitrary payload.</param>
         /// <param name="key">The key bytes used to sign the token.</param>
         /// <param name="algorithm">The hash algorithm to use.</param>
         /// <returns>The generated JWT.</returns>
@@ -97,7 +97,7 @@ namespace JwtDnx
         /// <summary>
         /// Creates a JWT given a payload, the signing key, and the algorithm to use.
         /// </summary>
-        /// <param name="payload">An arbitrary payload (must be serializable to JSON via <see cref="System.Web.Script.Serialization.JavaScriptSerializer"/>).</param>
+        /// <param name="payload">An arbitrary payload.</param>
         /// <param name="key">The key used to sign the token.</param>
         /// <param name="algorithm">The hash algorithm to use.</param>
         /// <returns>The generated JWT.</returns>
@@ -152,29 +152,29 @@ namespace JwtDnx
         {
             if (decodedCrypto != decodedSignature)
             {
-                throw new SignatureVerificationException(string.Format("Invalid signature. Expected {0} got {1}", decodedCrypto, decodedSignature));
+                throw new SignatureVerificationException(
+                    $"Invalid signature. Expected {decodedCrypto} got {decodedSignature}");
             }
 
             // verify exp claim https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.4
             var payloadData = JsonSerializer.Deserialize<Dictionary<string, object>>(payloadJson);
-            if (payloadData.ContainsKey("exp") && payloadData["exp"] != null)
-            {
-                // safely unpack a boxed int 
-                int exp;
-                try
-                {
-                    exp = Convert.ToInt32(payloadData["exp"]);
-                }
-                catch (Exception)
-                {
-                    throw new SignatureVerificationException("Claim 'exp' must be an integer.");
-                }
+            if (!payloadData.ContainsKey("exp") || payloadData["exp"] == null) return;
 
-                var secondsSinceEpoch = Math.Round((DateTime.UtcNow - UnixEpoch).TotalSeconds);
-                if (secondsSinceEpoch >= exp)
-                {
-                    throw new SignatureVerificationException("Token has expired.");
-                }
+            // safely unpack a boxed int 
+            int exp;
+            try
+            {
+                exp = Convert.ToInt32(payloadData["exp"]);
+            }
+            catch (Exception)
+            {
+                throw new SignatureVerificationException("Claim 'exp' must be an integer.");
+            }
+
+            var secondsSinceEpoch = Math.Round((DateTime.UtcNow - UnixEpoch).TotalSeconds);
+            if (secondsSinceEpoch >= exp)
+            {
+                throw new SignatureVerificationException("Token has expired.");
             }
         }
 
