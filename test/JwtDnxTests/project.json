@@ -1,13 +1,8 @@
 {
   "version": "1.0.0-*",
-  "description": "JwtDnxTests Class Library",
-  "authors": [ "ax" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
   "dependencies": {
     "FluentAssertions": "4.1.1",
-    "JwtDnx": "1.0.0-*",
+    "JwtDnx": "1.0.1-*",
     "xunit": "2.1.0",
     "xunit.runner.dnx": "2.1.0-rc1-build204"
   },
