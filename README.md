@@ -3,8 +3,19 @@
 This library supports generating and decoding [JSON Web Tokens](http://tools.ietf.org/html/draft-jones-json-web-token-10). 
 forked from [jwt-dotnet/jwt](https://github.com/jwt-dotnet/jwt)
 
+## Features
+* Support ASP.NET 5 MVC 6 (DNX).
+* Two Extention Methods for Converting Unix Timestamp between .NET DateTime. 
+* Simple usage.
+
 ## Installation
-Please  download and compile it yourself. NuGet is [here](https://www.nuget.org/packages/JwtDnx/).
+At first, You need to install Newtonsoft.Json.  [FYI](http://www.newtonsoft.com/json).  
+and, Please  download and compile JwtDnx yourself  or Install by NuGet,
+
+```console
+PM> Install-Package JwtDnx
+```
+NuGet repo is [here](https://www.nuget.org/packages/JwtDnx/).
 
 ## Usage
 ### Creating Tokens
@@ -59,16 +70,20 @@ which will output:
 As described in the [JWT RFC](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.4) the `exp` "claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing." If an `exp` claim is present and is prior to the current time the token will fail verification. The exp (expiry) value must be specified as the number of seconds since 1/1/1970 UTC.
 
 ```csharp
-var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-var now = Math.Round((DateTime.UtcNow - unixEpoch).TotalSeconds);
+var now = DateTime.UtcNow.ToUnixTimeSeconds();
 var payload = new Dictionary<string, object>()
 {
     { "exp", now }
 };
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
 string token = JwtDnx.JsonWebToken.Encode(payload, secretKey, JwtDnx.JwtHashAlgorithm.HS256);
+string jsonPayload = JwtDnx.JsonWebToken.Decode(token, secretKey);
+```
 
-string jsonPayload = JWT.JsonWebToken.Decode(token, secretKey); // JwtDnx.SignatureVerificationException!
+if you will decode  json that has invalid Unix Timestamp, you'll get some exception.
+
+```csharp
+string jsonPayload = JwtDnx.JsonWebToken.Decode(token, secretKey); // JwtDnx.SignatureVerificationException!
 ```
 
 ### Configure JSON Serialization
