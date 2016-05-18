@@ -1,21 +1,20 @@
-# Json Web Token (JWT) / JWS Implementation for .NET DNX
+# Json Web Token (JWT) / JWS Implementation for .NET Core
 
 This library supports generating and decoding [JSON Web Tokens](http://tools.ietf.org/html/draft-jones-json-web-token-10). 
-forked from [jwt-dotnet/jwt](https://github.com/jwt-dotnet/jwt)
 
 ## Features
-* Support ASP.NET 5 MVC 6 (DNX).
+* Support .NET Core / (ASP.NET Core).
 * Two Extention Methods for Converting Unix Timestamp between .NET DateTime. 
 * Simple usage.
 
-## Installation
+## Installation _(TBD)_
 At first, You need to install Newtonsoft.Json.  [FYI](http://www.newtonsoft.com/json).  
-and, Please  download and compile JwtDnx yourself  or Install by NuGet,
+and, Please  download and compile JwtCore yourself  or Install by NuGet,
 
 ```console
-PM> Install-Package JwtDnx
+PM> Install-Package JwtCore
 ```
-NuGet repo is [here](https://www.nuget.org/packages/JwtDnx/).
+NuGet repo is [here](https://www.nuget.org/packages/JwtCore/). _(TBD)_
 
 ## Usage
 ### Creating Tokens
@@ -27,7 +26,7 @@ var payload = new Dictionary<string, object>()
     { "claim2", "claim2-value" }
 };
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
-string token = JwtDnx.JsonWebToken.Encode(payload, secretKey, JwtDnx.JwtHashAlgorithm.HS256);
+string token = JwtCore.JsonWebToken.Encode(payload, secretKey, JwtCore.JwtHashAlgorithm.HS256);
 Console.WriteLine(token);
 ```
 
@@ -41,10 +40,10 @@ var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGFpbTEiOjAsImNsYWltMiI6Im
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
 try
 {
-    string jsonPayload = JwtDnx.JsonWebToken.Decode(token, secretKey);
+    string jsonPayload = JwtCore.JsonWebToken.Decode(token, secretKey);
     Console.WriteLine(jsonPayload);
 }
-catch (JwtDnx.SignatureVerificationException)
+catch (JwtCore.SignatureVerificationException)
 {
     Console.WriteLine("Invalid token!");
 }
@@ -57,7 +56,7 @@ Output will be:
 You can also deserialize the JSON payload directly to a .Net object with DecodeToObject:
 
 ```csharp
-var payload = JwtDnx.JsonWebToken.DecodeToObject(token, secretKey) as IDictionary<string, object>;
+var payload = JwtCore.JsonWebToken.DecodeToObject(token, secretKey) as IDictionary<string, object>;
 Console.WriteLine(payload["claim2"]);
 ```
 
@@ -76,14 +75,14 @@ var payload = new Dictionary<string, object>()
     { "exp", now }
 };
 var secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
-string token = JwtDnx.JsonWebToken.Encode(payload, secretKey, JwtDnx.JwtHashAlgorithm.HS256);
-string jsonPayload = JwtDnx.JsonWebToken.Decode(token, secretKey);
+string token = JwtCore.JsonWebToken.Encode(payload, secretKey, JwtCore.JwtHashAlgorithm.HS256);
+string jsonPayload = JwtCore.JsonWebToken.Decode(token, secretKey);
 ```
 
 if you will decode  json that has invalid Unix Timestamp, you'll get some exception.
 
 ```csharp
-string jsonPayload = JwtDnx.JsonWebToken.Decode(token, secretKey); // JwtDnx.SignatureVerificationException!
+string jsonPayload = JwtCore.JsonWebToken.Decode(token, secretKey); // JwtCore.SignatureVerificationException!
 ```
 
 ### Configure JSON Serialization
