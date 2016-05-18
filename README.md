@@ -3,6 +3,9 @@
 This library supports generating and decoding [JSON Web Tokens](http://tools.ietf.org/html/draft-jones-json-web-token-10). 
 forked from [jwt-dotnet/jwt](https://github.com/jwt-dotnet/jwt)
 
+## Attention
+If you want to get The .NET Core version, it's here [JwtCore on NuGet](https://www.nuget.org/packages/JwtCore/) , [Project site]https://github.com/SiroccoHub/JwtCore
+
 ## Features
 * Support ASP.NET 5 MVC 6 (DNX).
 * Two Extention Methods for Converting Unix Timestamp between .NET DateTime. 
